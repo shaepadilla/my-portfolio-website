@@ -17,8 +17,8 @@
     const isLoading = ref(false);
 
     // Web3Forms Access Key used to authenticate form submissions.
-    // INTEGRATION: replace with your own access key from https://web3forms.com
-    const WEB3FORMS_ACCESS_KEY = "7abb15c8-7adc-45cd-b4b7-dfe0020b32ec";
+    // Read from .env (VITE_WEB3FORMS_ACCESS_KEY).
+    const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
     // The submitForm() function handles the contact form submission.
     const submitForm = async () => {
@@ -81,8 +81,8 @@
 
     /* reCAPTCHA Integration */
 
-    // INTEGRATION: replace with your own site key from https://www.google.com/recaptcha
-    const SITE_KEY = 'YOUR_RECAPTCHA_SITE_KEY';
+    // Site key is read from .env (VITE_RECAPTCHA_SITE_KEY). Public key, safe to expose.
+    const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
     // The element where the reCAPTCHA checkbox will be rendered.
     const recaptchaContainer = ref(null);
     // The ID of the reCAPTCHA widget after it is created.

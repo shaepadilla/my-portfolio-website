@@ -32,6 +32,8 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
   font-size: 16px;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 body {
@@ -932,6 +934,14 @@ section {
   padding: 0 15px;
 }
 
+/* Grid items default to min-width:auto, which stops the 1fr column from
+   shrinking below the form inputs' intrinsic width and overflows small
+   phones. min-width:0 lets the column shrink to the available space. */
+.contact-info,
+.contact-form {
+  min-width: 0;
+}
+
 @media (min-width: 768px) {
   .contact-grid {
     grid-template-columns: 1fr 1.5fr;
@@ -1099,6 +1109,15 @@ section {
   border-color: #dbaedb;
   box-shadow: 0 0 15px rgba(219,174,219,0.6);
   background: rgba(0, 0, 0, 0.4);
+  /* Re-assert text color on focus, otherwise Bootstrap's .form-control:focus
+     (color: #212529) wins and the typed text turns dark on the dark field. */
+  color: #fff;
+}
+
+/* Keep placeholders readable but clearly distinct from typed text. */
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(232, 224, 232, 0.5);
 }
 
 
